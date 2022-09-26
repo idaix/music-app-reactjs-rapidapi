@@ -10,7 +10,7 @@ function App() {
       <Sidebar />
       <main className="md:ml-60 lg:ml-64 xl:ml-72 pt-1 w-full h-screen">
         <Navbar />
-        <div className="p-3">
+        <div className="p-1 container mx-auto">
           <Routes>
             <Route path="/" element={<Discover />} />
             <Route path="/around-you" element={<AroundYou />} />
