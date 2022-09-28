@@ -9,16 +9,18 @@ const Discover = () => {
   
   const genreTitle = genres.find(({ value }) => value === selectedGenre)?.title
   const handleGenreChange = (e) => {
-    console.log(e.target.value);
     setselectedGenre(e.target.value)
-    window.scrollTo(0, 0);
   }
 
 
   // get data from shazam api *fetch result evrytime selected genre shanges
   useEffect(()=>{
+    // scroll to top 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     setGenreSongsList([])
     fetchFromShazamApi(`genre-world?genre_code=${selectedGenre}`).then(data=>setGenreSongsList(data))
+  
   }, [selectedGenre])
   return (
     <div className=''>
