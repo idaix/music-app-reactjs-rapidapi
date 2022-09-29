@@ -10,3 +10,4 @@ export { default as TopPlay } from './TopPlay'
 // Pages Components
 export { default as Songs } from './Songs'
 export { default as SongCard } from './SongCard'
+export { default as PlayPause } from './PlayPause'

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { genres } from '../assets/constants'
 import { Songs } from '../components'
 import { fetchFromShazamApi } from '../utils/fetchApi'
+import PlayerContext from '../context/playerContext'
 
 const Discover = () => {
   const [selectedGenre, setselectedGenre] = useState('POP')
@@ -12,14 +13,18 @@ const Discover = () => {
     setselectedGenre(e.target.value)
   }
 
-
+  const { songsSet } = useContext(PlayerContext)
   // get data from shazam api *fetch result evrytime selected genre shanges
   useEffect(()=>{
     // scroll to top 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
     setGenreSongsList([])
-    fetchFromShazamApi(`genre-world?genre_code=${selectedGenre}`).then(data=>setGenreSongsList(data))
+    fetchFromShazamApi(`genre-world?genre_code=${selectedGenre}`)
+    .then(data=>{
+      setGenreSongsList(data)
+      songsSet(data)
+    })
   
   }, [selectedGenre])
   return (
