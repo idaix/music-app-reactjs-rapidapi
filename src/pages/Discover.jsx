@@ -20,7 +20,7 @@ const Discover = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
     setGenreSongsList([])
-    fetchFromShazamApi(`genre-world?genre_code=${selectedGenre}`)
+    fetchFromShazamApi(`charts/genre-world?genre_code=${selectedGenre}`)
     .then(data=>{
       setGenreSongsList(data)
       songsSet(data)

@@ -18,7 +18,7 @@ const Player = ({ currentSong, playing, handleEnd, currentTime, setCurrentTime, 
   const toggleAudio = () => audio.current.paused ? audio.current.play() : audio.current.pause()
   return (
     <audio
-      src={currentSong?.hub?.actions[1]?.uri}
+      src={currentSong?.hub?.actions?.[1]?.uri}
       ref={audio}
       preload="true"
       onTimeUpdate={(e)=>setCurrentTime(e.target.currentTime)}
