@@ -4,16 +4,15 @@ import PlayerContext from '../context/playerContext'
 import PlayPause from './PlayPause'
 
 const SongCard = ({ song }) => {
-    const { currentSong, setCurrent } = useContext(PlayerContext)
+    const { currentSong, setCurrent, togglePlaying } = useContext(PlayerContext)
     
     return (
         <div className='flex flex-col w-[250px] p-4 bg-black/5 dark:bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer'>
             <div className="relative w-full h-56 group"
                 onClick={() => setCurrent(song)}
             >
-                <div className={`absolute inset-0 justify-center items-center bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-50 group-hover:flex ${currentSong === song.key ? 'flex bg-white bg-opacity-70 dark:bg-black dark:bg-opacity-70' : 'hidden'}`}>
-                    {currentSong?.key === song.key?(<PlayPause isPlaying={true} />):(<PlayPause />)}
-                    
+                <div className={`absolute inset-0 justify-center items-center bg-white bg-opacity-50 dark:bg-black dark:bg-opacity-50 group-hover:flex ${currentSong?.key === song.key ? 'flex bg-white bg-opacity-70 dark:bg-black dark:bg-opacity-70' : 'hidden'}`}>
+                    {currentSong?.key === song.key?(<PlayPause isPlaying={true} togglePlaying={togglePlaying} />):(<PlayPause />)}
                 </div>
                 <img src={song.images?.coverart} alt={song.title} className='w-full h-full rounded-lg ' />
             </div>

@@ -1,15 +1,22 @@
-import { useRef } from 'react'
-const SeekBar = () => {
-  const audio = useRef('audio_tag')
+const SeekBar = ({ duration, currentTime, setCurrentTime }) => {
+
+  const handleProgress = (e) => {
+    let count = (e.target.value * duration) / 100
+    setCurrentTime(count)
+    console.log('count', count);
+  }
   return (
-    <div>
-      <audio
-        ref={audio}
-        type='audio/mpeg'
-        preload='true' 
-      ></audio>
-    </div>
+    <>
+      <input
+        onChange={handleProgress}
+        value={duration ? (currentTime * 100) / duration : 0}
+        type="range"
+        name="progressBar"
+        id="prgbar"
+      />
+    </>
   )
+
 }
 
 export default SeekBar

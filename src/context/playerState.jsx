@@ -22,14 +22,48 @@ const PlayState = ({ children }) => {
     // set current song
     const setCurrent = (newSong) => dispatch({ type: SET_CURRENT_SONG, data: state.currentSong = newSong, })
     // prev song
-    // const prevSong = () => {}
+    const prevSong = () => {
+        if (state.random){
+            return setCurrent(~~(Math.random() * state.songsList?.length))
+        }
+        if (state.currentSong.key == 0){
+            return setCurrent(state.songsList.length - 1)
+        }else{
+            return setCurrent(state.currentSong.key - 1)
+        }
+    }
     // next song
-    // const nextSong = () => {}
+    const nextSong = () => {
+        if (state.random){
+            return setCurrent(~~(Math.random() * state.songsList?.length))
+        }
+        if (state.currentSong.key == state.songsList.length - 1){
+            return setCurrent(0)
+        }else{
+            return setCurrent(state.currentSong.key + 1)
+        }
+    }
     // repêat & random
-    // const toggleRepeat = () => {}
-    // const toggleRandom = () => {}
+    const toggleRepeat = (id) => {
+        dispatch({ type: TOGGLE_REPEAT, data: state.repeat ? false : true, })
+    }
+    const toggleRandom = (id) => {
+        dispatch({ type: TOGGLE_RANDOM, data: state.random ? false : true,  })
+    }
     // end of song
-    // const handleEnd = () => {}
+    const handleEnd = () => {
+        if (state.random){
+            return dispatch({ type: SET_CURRENT_SONGT, data: ~~Math.random()* state.songsList.length, })
+        }else{
+            if (state.repeat) {
+                nextSong()
+            }else if (state.currentSong == state.songsList.length - 1){
+                return 
+            }else{
+                nextSong()
+            }
+        }
+    }
 
     return (
         <PlayerContext.Provider
@@ -40,11 +74,11 @@ const PlayState = ({ children }) => {
                 songsList: state.songsList,
                 setCurrent,
                 currentSong: state.currentSong,
-                // prevSong,
-                // nextSong,
-                // toggleRepeat,
-                // toggleRandom,
-                // handleEnd,
+                prevSong,
+                nextSong,
+                toggleRepeat,
+                toggleRandom,
+                handleEnd,
             }}
         >
             { children }
