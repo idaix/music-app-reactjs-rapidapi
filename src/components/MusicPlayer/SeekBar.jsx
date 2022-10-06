@@ -13,6 +13,7 @@ const SeekBar = ({ duration, currentTime, setCurrentTime }) => {
         type="range"
         name="progressBar"
         id="prgbar"
+        className="w-full"
       />
     </>
   )

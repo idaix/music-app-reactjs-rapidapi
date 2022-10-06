@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const DetailHeader = ({ song, forArtist, artist, artistId }) => {
+    console.log(artist);
   return (
     <div className='p-3 rounded flex flex-col md:flex-row gap-5 bg-gradient-to-t from-white/10 to-primary/40 backdrop-blur-lg text-center md:text-start'>
         <img 
