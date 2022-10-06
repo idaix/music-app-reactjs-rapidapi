@@ -3,9 +3,9 @@ import Songs from './Songs'
 
 const RelatedSongs = ({ songs }) => {
   return (
-    <div>
+    <>
       <Songs data={songs} />
-    </div>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ const Navbar = () => {
       <SearchBar />
       <button className="md:hidden text-xl" onClick={()=>setMenuIsOpen(prev=>!prev)}><TbMenu /></button>
       {menuIsOpen&&(
-        <div className="fixed w-full h-full bg-white dark:bg-black top-0 left-0 p-4">
+        <div className="fixed w-full h-full bg-white dark:bg-black top-0 left-0 p-4 z-50">
           <div className="relative">
             <button onClick={()=>setMenuIsOpen(prev=>!prev)} className='absolute right-0 top-0 italic text-sm'>EXIT</button>
             <Logo />
