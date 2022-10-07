@@ -1,6 +1,6 @@
 # Music App ReactJs RapidApi
 
-[Live demo](http://estatify-gold.vercel.app/)
+[Live demo](https://desiremusic.vercel.app/)
 
 ### Home Page (light)
 ![home-light](./screenshots/home-light.png)
