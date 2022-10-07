@@ -1,4 +1,7 @@
+// daichekkal
+
 import axios from "axios";
+
 const SHAZAM_BASE_URL = 'https://shazam-core.p.rapidapi.com/v1'
 
 const shazamOptions = {
